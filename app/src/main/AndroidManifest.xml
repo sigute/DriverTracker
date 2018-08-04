@@ -22,14 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.repositories.RepositoriesActivity"
-            android:label="@string/repositories_activity_title"
-            android:launchMode="singleTask"
-            android:parentActivityName=".ui.fields.FieldsActivity" />
-        <activity
-            android:name=".ui.repository.RepositoryActivity"
-            android:parentActivityName=".ui.repositories.RepositoriesActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"

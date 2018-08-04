@@ -89,9 +89,13 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
         runOnUiThread {
             map?.let { map ->
                 members.forEach { member ->
-                    val markerOptions = MarkerOptions()
-                    markerOptions.position(LatLng(member.lastKnownPosition.latitude, member.lastKnownPosition.longitude))
-                    map.addMarker(markerOptions)
+                    member.lastKnownPosition.let {
+                        if (it.latitude != null && it.longitude != null) {
+                            val markerOptions = MarkerOptions()
+                            markerOptions.position(LatLng(it.latitude, it.longitude))
+                            map.addMarker(markerOptions)
+                        }
+                    }
                 }
             }
         }
