@@ -1,6 +1,6 @@
 package com.github.sigute.tracker
 
-import com.github.sigute.tracker.api.GithubService
+import com.github.sigute.tracker.api.TreckerService
 import com.github.sigute.tracker.api.model.Repository
 import com.github.sigute.tracker.api.model.RepositoryOwner
 import com.github.sigute.tracker.api.model.SearchRepositoriesResponse
@@ -34,16 +34,16 @@ class SearchPresenterTest {
                     2))
     private val SEARCH_RESULTS = SearchRepositoriesResponse(REPOSITORIES)
 
-    private val mockRepositoriesDataSource: GithubService by lazy {
-        object : GithubService {
+    private val mockRepositoriesDataSource: TreckerService by lazy {
+        object : TreckerService {
             override fun searchRepositories(query: String, sort: String?, order: String): Single<SearchRepositoriesResponse> {
                 return Single.just(SEARCH_RESULTS)
             }
         }
     }
 
-    private val mockRepositoriesNoDataSource: GithubService by lazy {
-        object : GithubService {
+    private val mockRepositoriesNoDataSource: TreckerService by lazy {
+        object : TreckerService {
             override fun searchRepositories(query: String, sort: String?, order: String): Single<SearchRepositoriesResponse> {
                 return Single.error(Exception("error!"))
             }

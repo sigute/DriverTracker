@@ -1,10 +1,12 @@
 package com.github.sigute.tracker.di
 
-object DaggerWrapper {
+import android.content.Context
+
+object DaggerWrapper(val context: Context) {
     val component: TrackerComponent by lazy {
         DaggerTrackerComponent
                 .builder()
-                .trackerModule(TrackerModule())
+                .trackerModule(TrackerModule(context))
                 .build()
     }
 }

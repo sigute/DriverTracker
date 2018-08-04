@@ -1,12 +1,12 @@
 package com.github.sigute.tracker.ui.search
 
-import com.github.sigute.tracker.api.GithubService
+import com.github.sigute.tracker.api.TreckerService
 import com.github.sigute.tracker.api.model.SearchRepositoriesResponse
 import io.reactivex.observers.ResourceSingleObserver
 
 class SearchPresenter(
         private val searchView: SearchView,
-        private val repositoriesDataSource: GithubService) {
+        private val repositoriesDataSource: TreckerService) {
 
     suspend fun searchTapped(query: String, sortType: SortType) {
         searchView.showLoading()

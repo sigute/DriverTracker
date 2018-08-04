@@ -7,15 +7,13 @@ import android.text.TextWatcher
 import android.widget.Toast
 import com.github.sigute.tracker.R
 import com.github.sigute.tracker.api.model.Repository
-import com.github.sigute.tracker.api.model.SearchRepositoriesResponse
 import com.github.sigute.tracker.di.DaggerWrapper
 import com.github.sigute.tracker.ui.repositories.RepositoriesActivity
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.experimental.launch
 
 class SearchActivity : AppCompatActivity(), SearchView {
-    private val presenter by lazy { SearchPresenter(this, DaggerWrapper.component.githubService) }
+    private val presenter by lazy { SearchPresenter(this, DaggerWrapper.component.treckerService) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
