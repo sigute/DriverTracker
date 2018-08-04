@@ -32,7 +32,7 @@ class FieldsPresenter(
         }
     }
 
-    //TODO auth should be carried out in a new login activity, allowing user to provide credentials
+    //TODO auth should be carried out in a new login activity, allowing user to provide credentials themselves
     private fun carryOutAuth() {
         service.getAuthSession(username, password)
                 .subscribeOn(Schedulers.io())
@@ -97,6 +97,7 @@ class FieldsPresenter(
     }
 
     private fun showError(e: Throwable) {
+        //TODO in case of auth error, re-authentication might be required
         //TODO use error from resources
         view.showError(e.message ?: "error")
     }

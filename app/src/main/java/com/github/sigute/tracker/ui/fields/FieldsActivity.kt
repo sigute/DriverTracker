@@ -60,7 +60,9 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
     }
 
     override fun stopLoading() {
-        progressBar.visibility = View.GONE
+        runOnUiThread {
+            progressBar.visibility = View.GONE
+        }
     }
 
     override fun showFields(fields: List<Field>) {
@@ -74,6 +76,7 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
                             .addAll(polylineValues)
                             .fillColor(getRandomRainbowColor(this, 0.2f))
                     map.addPolygon(polygonOptions)
+                    //TODO could add additional properties to polygon, like field name, etc.
 
                     polylineValues.forEach { bounds.include(it) }
                 }
@@ -94,6 +97,7 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
                             val markerOptions = MarkerOptions()
                             markerOptions.position(LatLng(it.latitude, it.longitude))
                             map.addMarker(markerOptions)
+                            //TODO could add additional properties to marker, like person's name, nicer marker icon, etc.
                         }
                     }
                 }
