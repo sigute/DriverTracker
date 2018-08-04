@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="@dimen/margin_normal"
-    tools:context=".ui.search.SearchActivity">
+    tools:context=".ui.fields.FieldsActivity">
 
     <TextView
         android:id="@+id/find"

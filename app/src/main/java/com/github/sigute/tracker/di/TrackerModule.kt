@@ -38,7 +38,7 @@ class TrackerModule(val context: Context) {
     @Singleton
     internal fun providesRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://mytime.trecker.com/api/v3")
+                .baseUrl("https://mytime.trecker.com/api/v3/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)

@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.experimental.launch
 
 class SearchActivity : AppCompatActivity(), SearchView {
-    private val presenter by lazy { SearchPresenter(this, DaggerWrapper.component.treckerService) }
+    private val presenter by lazy {
+        SearchPresenter(this, DaggerWrapper(this).component.treckerService)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)

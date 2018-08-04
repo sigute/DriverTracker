@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.search.SearchActivity"
+            android:name=".ui.fields.FieldsActivity"
             android:launchMode="singleTop"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -26,7 +26,7 @@
             android:name=".ui.repositories.RepositoriesActivity"
             android:label="@string/repositories_activity_title"
             android:launchMode="singleTask"
-            android:parentActivityName=".ui.search.SearchActivity" />
+            android:parentActivityName=".ui.fields.FieldsActivity" />
         <activity
             android:name=".ui.repository.RepositoryActivity"
             android:parentActivityName=".ui.repositories.RepositoriesActivity" />
