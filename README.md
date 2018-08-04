@@ -1,9 +1,18 @@
-# RepoBrowser
+# DriverTracker
 
-Sample android project with GitHub repository search by free entry text with sorting - has results list and detail view. 
+Sample Android project showing a Google Map with polygons for fields and markers for locations, using Trecker API.
+
 Used Kotlin, MVP architecture, some common libraries such as Dagger, Retrofit and RxJava.
 
-API used: https://developer.github.com/v3/search/#search-repositories
+Time taken: **~3 hours**
+
+Added TODOs where things could be improved given more time, such as handling rotation, adding additional information to the polygons/markers, adding a new screen for login, nicer error handling (invluding auth errors).
+
+To run the project, add Google maps key and client credentials to gradle.properties file in the following format:
+USERNAME=username
+PASSWORD=password
+MAPS_API_KEY=mapskey
+
 
 ### Full library/resource list
 
@@ -11,8 +20,6 @@ API used: https://developer.github.com/v3/search/#search-repositories
 - https://github.com/ReactiveX/RxJava
 - https://github.com/square/retrofit
 - https://github.com/google/dagger
-- https://github.com/bumptech/glide
-- https://github.com/StevenDXC/DxLoadingButton 
-- https://github.com/primer/octicons
+- https://github.com/googlemaps/android-maps-utils
 - https://www.materialpalette.com
 - https://appicon.co
