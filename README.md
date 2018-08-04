@@ -10,7 +10,7 @@ Used Kotlin, MVP architecture, Google Map, common libraries such as Dagger, Retr
 
 Time taken: **~3 hours**
 
-Added TODOs where things could be improved given more time, such as handling rotation, adding additional information to the polygons/markers, adding a new screen for login, nicer error handling (invluding auth errors).
+Added TODOs where things could be improved given more time, such as handling rotation, adding additional information to the polygons/markers, adding a new screen for login, nicer error handling (including auth errors).
 
 To run the project, add Google maps key and client credentials to gradle.properties file in the following format:
 ```
