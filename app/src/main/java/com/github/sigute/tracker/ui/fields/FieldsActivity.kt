@@ -10,13 +10,19 @@ import com.github.sigute.tracker.api.model.Member
 import com.github.sigute.tracker.di.DaggerWrapper
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import kotlinx.android.synthetic.main.activity_search.*
 import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_fields.*
 
 
 class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
-    private val presenter by lazy { FieldsPresenter(this, DaggerWrapper(this).component.treckerService) }
+    private val presenter by lazy {
+        FieldsPresenter(
+                this,
+                DaggerWrapper(this).component.treckerService,
+                DaggerWrapper(this).component.authPreferences,
+                getString(R.string.username),
+                getString(R.string.password))
+    }
     private var map: GoogleMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +31,12 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
         setContentView(R.layout.activity_fields)
 
         setUpViews()
+        presenter.retrieveData()
+    }
 
+    private fun setUpViews() {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        presenter.retrieveData()
     }
 
     override fun onMapReady(map: GoogleMap?) {
@@ -37,21 +44,18 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
         //TODO
     }
 
-    private fun setUpViews() {
-        //TODO map
-    }
-
-    override fun showLoading() {
+    override fun startLoading() {
         runOnUiThread {
             progressBar.visibility = View.VISIBLE
-            //searchTerm.isEnabled = false
-           // searchButton.startLoading()
         }
+    }
+
+    override fun stopLoading() {
+        progressBar.visibility = View.GONE
     }
 
     override fun showFields(repositories: List<Field>) {
         runOnUiThread {
-            //TODO stop loading
             //TODO
         }
     }
@@ -59,14 +63,12 @@ class FieldsActivity : AppCompatActivity(), FieldsView, OnMapReadyCallback {
 
     override fun showMembers(repositories: List<Member>) {
         runOnUiThread {
-            //TODO stop loading
             //TODO
         }
     }
 
     override fun showError(error: String) {
         runOnUiThread {
-            progressBar.visibility = View.GONE
             //TODO replace this with a nicer way to show errors
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         }

@@ -7,6 +7,7 @@ import com.github.sigute.tracker.utils.AuthPreferences
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,6 +32,9 @@ class TrackerModule(val context: Context) {
     internal fun provideOkHttpClient(authPreferences: AuthPreferences): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(HeaderInterceptor(authPreferences))
+        //httpClient.addInterceptor(HttpLoggingInterceptor().apply {
+        //    level = HttpLoggingInterceptor.Level.BODY
+        //})
         return httpClient.build()
     }
 
@@ -38,7 +42,7 @@ class TrackerModule(val context: Context) {
     @Singleton
     internal fun providesRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://mytime.trecker.com/api/v3/")
+                .baseUrl("https://mytime.trecker.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)

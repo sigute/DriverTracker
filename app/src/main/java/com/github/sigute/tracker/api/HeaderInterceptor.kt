@@ -8,7 +8,7 @@ class HeaderInterceptor(private val authPreferences: AuthPreferences) : Intercep
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
 
-        authPreferences.header?.let {
+        authPreferences.token?.let {
             request.addHeader("Authorization", it)
         }
 
