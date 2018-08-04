@@ -6,7 +6,7 @@ import com.github.sigute.tracker.api.model.Member
 interface FieldsView {
     fun startLoading()
     fun stopLoading()
-    fun showFields(repositories: List<Field>)
-    fun showMembers(repositories: List<Member>)
+    fun showFields(fields: List<Field>)
+    fun showMembers(members: List<Member>)
     fun showError(error: String)
 }
